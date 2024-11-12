@@ -1,1 +1,41 @@
-ATAGATGCATAGCGCATAGCTAGATGTGCTAGC
+ATAGATGCATAGCGCATAGCTAGATGTGCTAGC/**
+ *  The {@code GenomeCompressor} class provides static methods for compressing
+ *  and expanding a genomic sequence using a 2-bit code.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ *  @author Zach Blick
+ */
+public class GenomeCompressor {
+
+    /**
+     * Reads a sequence of 8-bit extended ASCII characters over the alphabet
+     * { A, C, T, G } from standard input; compresses and writes the results to standard output.
+     */
+    public static void compress() {
+        // 85 because the highest value 'T', is ascii value 84
+        boolean[][] binMap = new boolean[85][2];
+        binMap['A'][0] = false;
+        binMap['A'][1] = false;
+
+        binMap['C'][0] = false;
+        binMap['C'][1] = true;
+
+        binMap['G'][0] = true;
+        binMap['G'][1] = false;
+
+        binMap['T'][0] = true;
+        binMap['T'][1] = true;
+
+        java.lang.String s = BinaryStdIn.readString();
+        int n = s.length();
+
+        // Write out each character
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 2; j++) {
+                BinaryStdOut.write(binMap[s.charAt(i)][j]);
+            }
+        }
+        BinaryStdOut.close();
+    }
+    }

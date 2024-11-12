@@ -24,19 +24,47 @@ public class GenomeCompressor {
      * { A, C, T, G } from standard input; compresses and writes the results to standard output.
      */
     public static void compress() {
+        // 85 because the highest value 'T', is ascii value 84
+        boolean[][] binMap = new boolean[85][2];
+        binMap['A'][0] = false;
+        binMap['A'][1] = false;
 
-        // TODO: complete the compress() method
+        binMap['C'][0] = false;
+        binMap['C'][1] = true;
 
+        binMap['G'][0] = true;
+        binMap['G'][1] = false;
+
+        binMap['T'][0] = true;
+        binMap['T'][1] = true;
+
+        String s = BinaryStdIn.readString();
+        int n = s.length();
+
+        // Write out each character
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 2; j++) {
+                BinaryStdOut.write(binMap[s.charAt(i)][j]);
+            }
+        }
         BinaryStdOut.close();
+    }
     }
 
     /**
      * Reads a binary sequence from standard input; expands and writes the results to standard output.
      */
     public static void expand() {
-
-        // TODO: complete the expand() method
-
+        while (!BinaryStdIn.isEmpty()) {
+            boolean[] binArray = new boolean[2];
+            for (int i = 0; i < 2; i++) {
+                binArray[i] = BinaryStdIn.readBoolean();
+            }
+            if (binArray[0] == true) {
+                
+            }
+            BinaryStdOut.write(());
+        }
         BinaryStdOut.close();
     }
 
