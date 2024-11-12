@@ -49,7 +49,7 @@ public class GenomeCompressor {
         }
         BinaryStdOut.close();
     }
-    }
+
 
     /**
      * Reads a binary sequence from standard input; expands and writes the results to standard output.
@@ -60,10 +60,19 @@ public class GenomeCompressor {
             for (int i = 0; i < 2; i++) {
                 binArray[i] = BinaryStdIn.readBoolean();
             }
-            if (binArray[0] == true) {
-                
+            if (binArray[0]) {
+                if (binArray[1]) {
+                    BinaryStdOut.write('T');
+                } else {
+                    BinaryStdOut.write('G');
+                }
+            } else {
+                if (binArray[1]) {
+                    BinaryStdOut.write('C');
+                } else {
+                    BinaryStdOut.write('A');
+                }
             }
-            BinaryStdOut.write(());
         }
         BinaryStdOut.close();
     }
@@ -77,7 +86,7 @@ public class GenomeCompressor {
      */
     public static void main(String[] args) {
 
-        if      (args[0].equals("-")) compress();
+        if (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();
         else throw new IllegalArgumentException("Illegal command line argument");
     }
