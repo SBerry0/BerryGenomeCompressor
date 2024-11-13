@@ -16,39 +16,32 @@
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  *  @author Zach Blick
+ *  @author Sohum Berry
  */
 public class GenomeCompressor {
     // I could set it to 13 because the length of virus log 2 rounds up to 13
     public static final int BIT_READ_LENGTH = 16;
+    public static final int BIT_WRITE_LENGTH = 2;
+
     /**
      * Reads a sequence of 8-bit extended ASCII characters over the alphabet
      * { A, C, T, G } from standard input; compresses and writes the results to standard output.
      */
     public static void compress() {
-        // Size of 85 because the highest value 'T', is ascii value 84
-        boolean[][] binMap = new boolean[85][2];
-        // Initialize what each pair of bits represent for each letter
-        binMap['A'][0] = false;
-        binMap['A'][1] = false;
-
-        binMap['C'][0] = false;
-        binMap['C'][1] = true;
-
-        binMap['G'][0] = true;
-        binMap['G'][1] = false;
-
-        binMap['T'][0] = true;
-        binMap['T'][1] = true;
+        // The highest value in this alphabet is 'T', so no need to waste memory on a larger map
+        int[] binaryMap = new int['T'+1];
+        binaryMap['A'] = 0;
+        binaryMap['C'] = 1;
+        binaryMap['G'] = 2;
+        binaryMap['T'] = 3;
 
         String s = BinaryStdIn.readString();
         int n = s.length();
         // Write out the length of the string using 16 bits. No need for all 32, only positive values are needed.
         BinaryStdOut.write(n, BIT_READ_LENGTH);
-        // Write out each character as two bits
+        // Write out each character/nucleotide as two bits
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < 2; j++) {
-                BinaryStdOut.write(binMap[s.charAt(i)][j]);
-            }
+            BinaryStdOut.write(binaryMap[s.charAt(i)], BIT_WRITE_LENGTH);
         }
         BinaryStdOut.close();
     }
@@ -57,30 +50,20 @@ public class GenomeCompressor {
      * Reads a binary sequence from standard input; expands and writes the results to standard output.
      */
     public static void expand() {
+        // Create a map to connect a number to each character/nucleotide
+        char[] charMap = new char[4];
+        charMap[0] = 'A';
+        charMap[1] = 'C';
+        charMap[2] = 'G';
+        charMap[3] = 'T';
+
         // Read length of the bits that should be read to not read in the flushed bits at the end
         int length = BinaryStdIn.readShort();
-
-        // For each bit in the length...
+        // For each bit in the length, read in a number from the BIT_WRITE_LENGTH number of bits
         for (int i = 0; i < length; i++) {
-            // Read in the next two bits to find what the next letter is
-            boolean[] binArray = new boolean[2];
-            for (int j = 0; j < 2; j++) {
-                binArray[j] = BinaryStdIn.readBoolean();
-            }
-            // Check the values of each bit to decide which letter to write out
-            if (binArray[0]) {
-                if (binArray[1]) {
-                    BinaryStdOut.write('T');
-                } else {
-                    BinaryStdOut.write('G');
-                }
-            } else {
-                if (binArray[1]) {
-                    BinaryStdOut.write('C');
-                } else {
-                    BinaryStdOut.write('A');
-                }
-            }
+            int num = BinaryStdIn.readInt(BIT_WRITE_LENGTH);
+            // Write the character from the map to the buffer
+            BinaryStdOut.write(charMap[num]);
         }
         // Close the stream
         BinaryStdOut.close();
