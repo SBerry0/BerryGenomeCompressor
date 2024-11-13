@@ -40,7 +40,7 @@ public class GenomeCompressor {
 
         String s = BinaryStdIn.readString();
         int n = s.length();
-
+        BinaryStdOut.write(n, 16);
         // Write out each character
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < 2; j++) {
@@ -55,10 +55,12 @@ public class GenomeCompressor {
      * Reads a binary sequence from standard input; expands and writes the results to standard output.
      */
     public static void expand() {
-        while (!BinaryStdIn.isEmpty()) {
+        int length = BinaryStdIn.readInt(16);
+//        while (!BinaryStdIn.isEmpty()) {
+        for (int i = 0; i < length; i++) {
             boolean[] binArray = new boolean[2];
-            for (int i = 0; i < 2; i++) {
-                binArray[i] = BinaryStdIn.readBoolean();
+            for (int j = 0; j < 2; j++) {
+                binArray[j] = BinaryStdIn.readBoolean();
             }
             if (binArray[0]) {
                 if (binArray[1]) {

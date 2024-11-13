@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b73ab661-840a-4b64-b072-3764519be013" name="Changes" comment="First Log">
-      <change afterPath="$PROJECT_DIR$/src/BinaryStdIn.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BinaryStdOut.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BlickCompressor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GenomeCompressor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/genomeTestOutput.txt" afterDir="false" />
+    <list default="true" id="b73ab661-840a-4b64-b072-3764519be013" name="Changes" comment="Second Log">
+      <change afterPath="$PROJECT_DIR$/src/genomeTestBinary.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/genomeTestDecompressed.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/virusBinary.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/virusDecompressed.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WORK_LOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/WORK_LOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GenomeCompressor.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/GenomeCompressor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GenomeCompressor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GenomeCompressor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genomeTestBack.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genomeTestOutput.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,12 +89,21 @@
       <option name="project" value="LOCAL" />
       <updated>1731434640511</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Second Log">
+      <option name="closed" value="true" />
+      <created>1731435955948</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731435955948</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First Log" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Log" />
+    <MESSAGE value="Second Log" />
+    <option name="LAST_COMMIT_MESSAGE" value="Second Log" />
   </component>
 </project>
